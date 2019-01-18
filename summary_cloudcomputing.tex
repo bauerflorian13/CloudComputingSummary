@@ -162,6 +162,7 @@ Just a few informations about the coursework and programming project. May be hop
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{warehousescalecomputer.png}
+    \caption{WSC - Warehouse-scale Computer}
     \label{fig:warehousescalecomputer}
 \end{figure}
 
@@ -188,12 +189,68 @@ Definiton see \cref{subsec:everythingasaservice}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{pizzaserviceexample.png}
+    \caption{Pizza as a Service Example for *aaS}
     \label{fig:pizzaservice}
 \end{figure}
 
-\section*{L07: Virtualisation}
+\subsection*{Structure of AWS Cloud}
+\begin{itemize}
+    \item \textbf{Availability Zones}: cluster of independent data centres, enables \textbf{fault isolation} and \textbf{high availability}
+    \item \textbf{Regions}: entirely independent clouds, consists of a least two \textit{AZ}s, interconnection on global backbone,
+    different regions have different costings
+\end{itemize}
+
+\subsection*{Which Region should I choose?}
+\begin{itemize}
+    \item \textbf{Data souvereignty and compilance}: where to store user data?
+    \item \textbf{Proximity of users to data}: where are the most of my users? -> lowest latency
+    \item \textbf{Services and feature availability}: services and features may vary
+    \item \textbf{Cost effectiveness}: each region has different costs (Europe and US are the cheapest)
+\end{itemize}
+
+\subsection*{High Availability \& Fault Tolerance}
+\textbf{High Availability:}
+\begin{itemize}
+    \item minimise service downtime by using redundant components
+    \item require components in at least two AZs
+    \item IaaS may have HA, PaaS usually will have HA
+\end{itemize}
+
+\textbf{Fault Tolerance}
+\begin{itemize}
+    \item ensure no service disruption by using active-active architecture
+    \item requires service components in at least three AZs
+    \item Iaas is unlikely to offer FT, PaaS some offers FT
+\end{itemize}
+
+\subsection*{AWS Storage options}
+\begin{itemize}
+    \item Elastic Block Storage: SSDs, Magnetic, NAS, Use: OS, Apps
+    \item S3: durable object storage, very cheap and big
+    \item Instance Storage: on-host storage, very fast, caching
+    \item Elastic File Store: shared storage across AZs
+\end{itemize}
+
+\subsection*{IaaS vs PaaS}
+\begin{itemize}
+    \item IaaS mainly used by SysAdmins, PaaS mainly used by Developers
+    \item IaaS provides e.g. \textit{VMs},\textit{Storage Services},\textit{Networking}, PaaS provides e.g. hosted databases, \textit{App deployment and managment env.},\textit{test suites}
+    \item IaaS lower cloud costs, PaaS lower human costs
+\end{itemize}
+
+\section*{L07: Virtualisation, Containers and Container Orchestration}
+
+\subsection*{}
+\begin{itemize}
+    \item 
+\end{itemize}
 
 \section*{L09: Serverless}
+
+\subsection*{}
+\begin{itemize}
+    \item 
+\end{itemize}
 
 \section*{L11: Scalable Systems}
 

@@ -289,7 +289,7 @@ Definiton see \cref{subsec:everythingasaservice}
 
 \subsubsection*{Motivation}
 \begin{itemize}
-    \item To run containers at scale needs managment tools,
+    \item To run containers at scale needs managment tools
     \item \textbf{(Horizontal) Auto-scaling on demand}
     \item \textbf{Fault Tolerance}
     \item \textbf{Manage Accessibility from the web}
@@ -323,12 +323,64 @@ Definiton see \cref{subsec:everythingasaservice}
 
 \section*{L09: Serverless}
 
+\textbf{Definiton}: \textit{The essence of the serverless trend is the \textbf{absence} of the server concept during software development.}
+
+\subsection*{Abstractions of App Deployment}
+\begin{itemize}
+    \item \textit{More Abstraction}: more control and trust to given platform
+    \item \textit{Less Abstraction}:more undifferentiated heavy lifting
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{deploymentabstractions.png}
+    \caption{Deployment abstractions: More vs less abstraction}
+    \label{fig:deploymentabstractions}
+\end{figure}
+
+\subsection*{The four pillars of serverless}
+\begin{itemize}
+    \item No server managment
+    \item Flexible Scaling
+    \item High Availability
+    \item Never Pay for Idle
+\end{itemize}
+
+\subsection*{Serverless FaaS: AWS Lambda}
+\begin{itemize}
+    \item Triggered by an event
+    \item typically invoked in a few ms (warm start)
+    \item Cold start issue: code that hasn't been used for a while takes longer to start
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{AWSLambdaTrigger.png}
+    \caption{AWS Lambda: Event Triggers}
+    \label{fig:awslambda}
+\end{figure}
+
+\subsection*{The four stumbling blocks of serverless}
+\begin{itemize}
+    \item Performance Limitations
+    \item Vendor Lock-in
+    \item Monitoring and Debugging
+    \item Security and Privacy
+\end{itemize}
+
+\subsection*{Serverless usecases}
+\begin{itemize}
+    \item Event-driven data processing (resize uploaded images)
+    \item Serverless webapplication (simple 3-tier app)
+    \item Mobile  and IoT Apps (Airbnb smart home)
+    \item Application Ecosystem (Alexa Skill)
+    \item Event Workflow (image recognition and processing)
+\end{itemize}
+
+\section*{L11: Scalable Systems}
+
 \subsection*{}
 \begin{itemize}
     \item 
 \end{itemize}
-
-\section*{L11: Scalable Systems}
 
 \section*{L13: MapReduce and GFS/HDFS}
 

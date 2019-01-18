@@ -175,7 +175,7 @@ Just a few informations about the coursework and programming project. May be hop
 \subsection*{Resume}
 \begin{itemize}
     \item there is a lot going on \textit{under the hood of a WSC} (WSC = \textbf{Warehouse-scale Computer})
-    \item \textit{prod>>dev}: The innovations are made by and in companies not universitys
+    \item \textit{prod$>>$dev}: The innovations are made by and in companies not universitys
 \end{itemize}
 
 \section*{L05: *aaS}
@@ -240,9 +240,85 @@ Definiton see \cref{subsec:everythingasaservice}
 
 \section*{L07: Virtualisation, Containers and Container Orchestration}
 
-\subsection*{}
+\subsection*{Virtualisation Basics}
 \begin{itemize}
-    \item 
+    \item server hardware should be hidden from the user, $\rightarrow$ user sees only guest OS in a VM and not the host OS
+    \item Amazon offers different VMs (\textit{AMIs}) with Linux or Windows
+    \item VMs are created and run by the \textit{Virtual Machine Monitor (VMM)} aka the \textbf{hypervisor}
+    \item VMs can stopped, copied, paused and resumed, which enables \textbf{server consolidation}: compress VMs to freeup servers
+\end{itemize}
+
+\subsection*{Types of Virtualisation}
+ Have a look at \Cref{fig:vmtypes}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{vmtypes.png}
+    \caption{The two different virtualisation types}
+    \label{fig:vmtypes}
+\end{figure}
+
+\textit{Xen} is an example for Type 1 VMs.
+
+\begin{itemize}
+    \item \textbf{Full virtualisation}: complete simulation of underlying guest machine hardware
+    \item \textbf{Paravirtualisation}: guest OS can make Syscalls via the hypervisor's API, hypervisor does not simulate hardware
+\end{itemize}
+
+\subsection*{Containerisation: Docker}
+\begin{itemize}
+    \item package and run application in lightweight, isolated environment
+    \item Docker runs user processes in a super-isolated execution mode
+    \item \textit{operating system level virtualisation} with shared kernel
+    \item Advantage: No need to boot a whole VM
+    \item Disadvantage: Potentially more insecure than complete virtualisation
+\end{itemize}
+
+\textbf{Docker Objects}
+\begin{itemize}
+    \item \textbf{Images}: read only template with instructions how to create a Docker Container
+    \item \textbf{Container}: runnable instance of an  image, but ephemeral $\rightarrow$ all changes not mounted to persistend storage will be lost
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{vmvsdocker.png}
+    \caption{VMs vs Docker architecture schema}
+    \label{fig:vmvsdocker}
+\end{figure}
+
+\subsection*{Container Orchestration: Kubernetes}
+
+\subsubsection*{Motivation}
+\begin{itemize}
+    \item To run containers at scale needs managment tools,
+    \item \textbf{(Horizontal) Auto-scaling on demand}
+    \item \textbf{Fault Tolerance}
+    \item \textbf{Manage Accessibility from the web}
+    \item \textbf{update/rollback without downtime}
+\end{itemize}
+
+\subsubsection*{Featues of Kubernetes}
+\begin{itemize}
+    \item \textbf{Automated scaling}
+    \item \textbf{Self healing}
+    \item \textbf{Horizontal scaling}
+    \item \textbf{Service discovery and Load Balancing}
+    \item \textbf{Automated Rollbacks/Rollouts}
+\end{itemize}
+
+\subsubsection*{Kubernetes Components}
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{KubernetesComponents.png}
+    \caption{Components of the Kubernetes architecture}
+    \label{fig:kubernetescomponents}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Master}: manages the cluster state, subcomponents: \textbf{API Server}, \textbf{Controller}, \textbf{Scheduler}, writes to \textit{etcd} 
+    \item \textbf{Nodes}: run work in pods, \textbf{Pods} are the scheduling unit, \textbf{Kubelet} is the agent to communicates with master, \textbf{Kube-proxy} is the network agent
+    \item \textbf{Kubeclt}: local cli to controll cluster
+    \item \textbf{Etcd}: distributed key-value store
+    \item \textbf{Deployments}: \textbf{Replica Sets}, balances the number of running and scheduled pods; deployments provide update to Pods or ReplicaSets
+    \item \textbf{Services}: groupings of pods which can be referred by a name, Unique IP and DNS name; Pods in Services are load balanced 
 \end{itemize}
 
 \section*{L09: Serverless}

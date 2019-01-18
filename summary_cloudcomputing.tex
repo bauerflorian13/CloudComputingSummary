@@ -1,0 +1,223 @@
+\documentclass[a4paper]{article}
+
+\usepackage[dvipsnames,usenames,svgnames,table]{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{caption}
+\usepackage{csquotes}
+\usepackage{empheq}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[bottom]{footmisc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cleveref}
+% NOTE: the ordering is important!
+\usepackage[toc]{glossaries}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{titleps}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{trfsigns}
+\usepackage{url}
+\usepackage{wrapfig}
+
+% Setup of pagestyle
+\newpagestyle{fancypage}{
+  \headrule
+  \sethead{\MakeUppercase{\thesection\quad \sectiontitle}}{}{\thesubsection\quad \subsectiontitle}
+  \setfoot{}{\thepage}{}
+}
+\settitlemarks{section,subsection,subsubsection}
+\pagestyle{fancypage}
+
+% Setup links
+\hypersetup{
+    linktoc=all,
+    citecolor=gray,
+    linkcolor=magenta,
+    colorlinks=true,
+}
+
+\geometry{
+ landscape,
+ left=15mm,
+ right=15mm,
+ top=20mm,
+ bottom=20mm,
+}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{1em}#1\hspace{1em}}}
+\newcommand{\circlesign}[1]{
+    \mathbin{
+        \mathchoice
+        {\buildcirclesign{\displaystyle}{#1}}
+        {\buildcirclesign{\textstyle}{#1}}
+        {\buildcirclesign{\scriptstyle}{#1}}
+        {\buildcirclesign{\scriptscriptstyle}{#1}}
+    }
+}
+\newcommand\buildcirclesign[2]{%
+    \begin{tikzpicture}[baseline=(X.base), inner sep=0, outer sep=0]
+    \node[draw,circle] (X)  {\ensuremath{#1 #2}};
+    \end{tikzpicture}%
+}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\SNR}{SNR}
+\DeclareMathOperator{\Var}{Var}
+
+\graphicspath{ {img/} }
+
+\setlength\columnseprule{0.5pt}
+\setlength{\columnsep}{10mm}
+\setlength{\parindent}{0mm}
+\setlength{\abovecaptionskip}{0pt}
+\setlist[1]{itemsep=-0.1em}
+
+\title{\vspace*{\fill}Summary of Cloud Computing at University of Bristol 2018 / 2019\footnote{This is just a simple summary.
+I am not responsible for the provided content or anything which belongs to this. If there are any questions please contact me at
+bauerflorian13@gmail.com .}}
+\author{Florian Bauer\vspace*{\fill}}
+
+\begin{document}
+  \begin{titlepage}
+    \clearpage
+    \maketitle
+    \thispagestyle{empty}
+  \end{titlepage}
+
+  \begingroup
+    \hypersetup{linkcolor=black}
+    \clearpage
+    \tableofcontents
+    \thispagestyle{empty}
+  \endgroup
+  \pagebreak
+
+  \setcounter{section}{-1}
+  \setcounter{page}{1}
+  \begin{multicols}{3}
+
+\section*{Lecture 01: Introduction}
+
+\subsection*{Comparison of the internet and electricity network}
+\begin{itemize}
+    \item starts with everyone has his own (electricity/ computationally power)
+    \item connection between every single users grows
+    \item ends in an all connected world with only a few big services provided by a small number of providers
+    (computationally power goes from the device of the endusers to the cloud, electricity comes from big providers) 
+\end{itemize}
+
+\subsection*{Normal Failure}
+\begin{itemize}
+    \item cloud data centre with $99.999\%$ survival rate
+    \item $500 000$ server, probability of $100\%$ of the servers are still running after 3 years is $1\%$.
+    \item \textbf{solution}: modular data centres, \textit{servers in container boxes}
+\end{itemize}
+
+\subsection*{Essential Characteristics of Cloud Computing}
+This definition belongs to NIST's characteristics of Cloud Computing
+\begin{itemize}
+    \item \textbf{On-demand self service}
+    \item \textbf{Broad network access}
+    \item \textbf{Ressource pooling}
+    \item \textbf{Rapid elasticity}
+    \item \textbf{Measured service}
+\end{itemize}
+
+\subsection*{A common stratification: *aaS}
+\label{subsec:everythingasaservice}
+Everything as a Service.
+\begin{itemize}
+    \item \textbf{SaaS}: \textit{Software as a Service}, for instance: everyone
+    \item \textbf{PaaS}: \textit{Platform as a Service}, for instance: \textit{Google App Engine}, \textit{Amazon Appstream}
+    \item \textbf{IaaS}: \textit{Infrastructure as a Service}, for instance: \textit{Amazon EC2, S3}, \textit{Google Compute Engine}
+\end{itemize}
+
+A small number of companies providing IaaS/PaaS s services. Convergence to an oligopoly of less than five providers seems certain.
+
+\section*{Lecture 02: Coursework}
+
+Just a few informations about the coursework and programming project. May be hopefully not important for the exam...
+
+\section*{L03: Economics of Cloud}
+
+\subsection*{The basic Economics}
+\begin{itemize}
+    \item \textbf{Cap}ital \textbf{Ex}penditure: \textit{Capex}
+    \item \textbf{Op}erating \textbf{Ex}panditure: \textit{Opex}
+    \item Capex vs Opex: \textit{Why buy a cow if all you need is the milk?}
+\end{itemize}
+
+\subsection*{A typical warehouse scale computer}
+\begin{itemize}
+    \item \textit{pizzabox} in a \textit{refrigerator} is a server rack
+    \item multiple server racks together are a cluster
+    \item see \Cref{fig:warehousescalecomputer}
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{warehousescalecomputer.png}
+    \label{fig:warehousescalecomputer}
+\end{figure}
+
+\subsection*{Energy \& Power Efficiency}
+\begin{itemize}
+    \item cooling cost are around $42\%$
+    \item optimizing the cooling efficiency will lower the overall costs massivley
+\end{itemize}
+
+\subsection*{Resume}
+\begin{itemize}
+    \item there is a lot going on \textit{under the hood of a WSC} (WSC = \textbf{Warehouse-scale Computer})
+    \item \textit{prod>>dev}: The innovations are made by and in companies not universitys
+\end{itemize}
+
+\section*{L05: *aaS}
+Definiton see \cref{subsec:everythingasaservice}
+
+\subsection*{Why Xaas or *aaS}
+\begin{itemize}
+    \item avoiding of \textbf{Undiffertiated Heavy Lifting}
+    \item the cloud is an ideal environment providing \textit{scale}, \textit{low cost}, \textit{automation via Infrastructure-as-Code}
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{pizzaserviceexample.png}
+    \label{fig:pizzaservice}
+\end{figure}
+
+\section*{L07: Virtualisation}
+
+\section*{L09: Serverless}
+
+\section*{L11: Scalable Systems}
+
+\section*{L13: MapReduce and GFS/HDFS}
+
+\section*{L14: CAP, Paxos, BGP}
+
+\section*{L15: The Hadoop Ecosystem}
+
+\section*{L16: Spark and In-Memory Methods}
+
+\section*{L17: NoSQL}
+
+\section*{L18: Graph Databases}
+
+\section*{L19: NewSQL $\&$ Event Stream Processing}
+
+\section*{L20: Cloud Security}
+
+\section*{L21: DevOp}
+
+Todo...
+
+\vspace*{\fill}
+    \pagebreak
+\end{multicols}
+\end{document} 

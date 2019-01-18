@@ -456,12 +456,35 @@ TODO
 
 \section*{L14: CAP, Paxos, BGP}
 
+\subsection*{CAP Theorem}
+A good cloud might seek to achieve these three things, but it is only able to select two of them.
+And as partition tolerance is mandatory for cloud applications we can only choose one of the other two.
+
+\begin{itemize}
+    \item \textbf{C}onsistency
+    \item \textbf{A}vailability
+    \item \textbf{P}artition Tolerance
+\end{itemize}
+
+\subsubsection*{Three paxos rules}
+\begin{itemize}
+    \item Proposers: learn already accepted values
+    \item Acceptors: let proposers know already accepted values, accept or reject proposals, reach consensus on chosing a particular proposal/value
+    \item Learners: become aware of the chosen proposal/value and action it
+\end{itemize}
+
+\subsection*{Byzantine Generals}
+\begin{itemize}
+    \item TODO
+\end{itemize}
+
+
+\section*{L15: The Hadoop Ecosystem}
+
 \subsection*{}
 \begin{itemize}
     \item 
 \end{itemize}
-
-\section*{L15: The Hadoop Ecosystem}
 
 \section*{L16: Spark and In-Memory Methods}
 

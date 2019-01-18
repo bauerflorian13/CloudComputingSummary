@@ -377,14 +377,89 @@ Definiton see \cref{subsec:everythingasaservice}
 
 \section*{L11: Scalable Systems}
 
-\subsection*{}
+\subsection*{The Scale Cube}
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{AWSLambdaTrigger.png}
+    \caption{AWS Lambda: Event Triggers}
+    \label{fig:awslambda}
+\end{figure}
+
 \begin{itemize}
-    \item 
+    \item x-axis: \textbf{Horizontal Duplication}, unbiased cloning of services and data
+    \item y-axis: \textbf{split by function or service}:refers to isolation (making different services)
+    \item z-axis: \textbf{partitioning the domain of incoming requests}:data-partitioning, split relevant to 
+    client (example: All customers from A-F are together processed, all customers from G-M, etc)
+\end{itemize}
+
+\subsection*{Software architectures}
+\begin{itemize}
+    \item set of structures needed to reason about the system
+    \item might be implicit
+\end{itemize}
+
+\subsection*{Architectural Components and Patterns for scalable systems}
+\begin{itemize}
+    \item \textbf{Decoupled Components}: allows independent scalability of components; mechanisms to decouple:
+    \begin{itemize}
+        \item load balancers
+        \item message queues
+        \item message topics
+        \item service registry
+    \end{itemize}
+    \item \textbf{Load Balancers}: distributing requests, hiding the server from client access, manage availability (HA),session affinity/sticky sessions
+    \item \textbf{Session affinity/sticky sessions}:cookies managed by load balancer(duration based), cookies managed by application cookie
+    \item \textbf{LB Algorithms}:(Weighted) Round Robin, Least connections
+    \item \textbf{Message Topics}:messages are immeditaley pushed to subscribers, decouple producers and subscribers, concurrent processing
+    \item \textbf{Message Queues}: Asynchronous: queue it now but run it later; seperates application logic; introduces latency
+    \item \textbf{Service Registries}: resolve addresses for names, Leader voting (\textit{Byzantine Generel})
+    \item \textbf{Automation}: autoscaler as sclaing can not be done manually (Metrics are CPU, RAM, Memory)
+    \item Architectural Patterns: Service oriented architectures;  APIs are cloud requirement
 \end{itemize}
 
 \section*{L13: MapReduce and GFS/HDFS}
 
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{GoogleTechnologyStack.png}
+    \caption{The Google Technology Stack}
+    \label{fig:googlestack}
+\end{figure}
+
+\subsection*{MapReduce: Basics}
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{MapReduce.png}
+    \caption{The MapReduce Technology}
+    \label{fig:mapreduce}
+\end{figure}
+
+\begin{itemize}
+    \item we have some input data
+    \item \textit{Map phase}: master process assigns worker processes their part of the data, the data is than processed 
+    \item \textit{Reduce phase}: other worker processes collect the processed data and reduce them
+\end{itemize}
+
+AS the master pings the worker and a failure would be noticed really fast. This can now be handled by assigning other processes the task 
+of the failed process.
+
+\subsection*{GFS - Google File System}
+\textbf{GFS Objects}
+\begin{itemize}
+    \item TODO 
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{GFSArchitecture.png}
+    \caption{The GFS Architecture}
+    \label{fig:gfs}
+\end{figure}
+
+TODO
+
 \section*{L14: CAP, Paxos, BGP}
+
+\subsection*{}
+\begin{itemize}
+    \item 
+\end{itemize}
 
 \section*{L15: The Hadoop Ecosystem}
 

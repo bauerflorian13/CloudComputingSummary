@@ -29,7 +29,7 @@
 % Setup of pagestyle
 \newpagestyle{fancypage}{
   \headrule
-  \sethead{\MakeUppercase{\thesection\quad \sectiontitle}}{}{\thesubsection\quad \subsectiontitle}
+  \sethead{\MakeUppercase{\sectiontitle}}{}{\subsectiontitle}
   \setfoot{}{\thepage}{}
 }
 \settitlemarks{section,subsection,subsubsection}
@@ -83,6 +83,8 @@ I am not responsible for the provided content or anything which belongs to this.
 bauerflorian13@gmail.com .}}
 \author{Florian Bauer\vspace*{\fill}}
 
+\setcounter{secnumdepth}{0}
+
 \begin{document}
   \begin{titlepage}
     \clearpage
@@ -102,9 +104,9 @@ bauerflorian13@gmail.com .}}
   \setcounter{page}{1}
   \begin{multicols}{3}
 
-\section*{Lecture 01: Introduction}
+\section{Lecture 01: Introduction}
 
-\subsection*{Comparison of the internet and electricity network}
+\subsection{Comparison of the internet and electricity network}
 \begin{itemize}
     \item starts with everyone has his own (electricity/ computationally power)
     \item connection between every single users grows
@@ -112,14 +114,14 @@ bauerflorian13@gmail.com .}}
     (computationally power goes from the device of the endusers to the cloud, electricity comes from big providers) 
 \end{itemize}
 
-\subsection*{Normal Failure}
+\subsection{Normal Failure}
 \begin{itemize}
     \item cloud data centre with $99.999\%$ survival rate
     \item $500 000$ server, probability of $100\%$ of the servers are still running after 3 years is $1\%$.
     \item \textbf{solution}: modular data centres, \textit{servers in container boxes}
 \end{itemize}
 
-\subsection*{Essential Characteristics of Cloud Computing}
+\subsection{Essential Characteristics of Cloud Computing}
 This definition belongs to NIST's characteristics of Cloud Computing
 \begin{itemize}
     \item \textbf{On-demand self service}
@@ -129,7 +131,7 @@ This definition belongs to NIST's characteristics of Cloud Computing
     \item \textbf{Measured service}
 \end{itemize}
 
-\subsection*{A common stratification: *aaS}
+\subsection{A common stratification: *aaS}
 \label{subsec:everythingasaservice}
 Everything as a Service.
 \begin{itemize}
@@ -140,20 +142,20 @@ Everything as a Service.
 
 A small number of companies providing IaaS/PaaS s services. Convergence to an oligopoly of less than five providers seems certain.
 
-\section*{Lecture 02: Coursework}
+\section{Lecture 02: Coursework}
 
 Just a few informations about the coursework and programming project. May be hopefully not important for the exam...
 
-\section*{L03: Economics of Cloud}
+\section{L03: Economics of Cloud}
 
-\subsection*{The basic Economics}
+\subsection{The basic Economics}
 \begin{itemize}
     \item \textbf{Cap}ital \textbf{Ex}penditure: \textit{Capex}
     \item \textbf{Op}erating \textbf{Ex}panditure: \textit{Opex}
     \item Capex vs Opex: \textit{Why buy a cow if all you need is the milk?}
 \end{itemize}
 
-\subsection*{A typical warehouse scale computer}
+\subsection{A typical warehouse scale computer}
 \begin{itemize}
     \item \textit{pizzabox} in a \textit{refrigerator} is a server rack
     \item multiple server racks together are a cluster
@@ -166,22 +168,22 @@ Just a few informations about the coursework and programming project. May be hop
     \label{fig:warehousescalecomputer}
 \end{figure}
 
-\subsection*{Energy \& Power Efficiency}
+\subsection{Energy \& Power Efficiency}
 \begin{itemize}
     \item cooling cost are around $42\%$
     \item optimizing the cooling efficiency will lower the overall costs massivley
 \end{itemize}
 
-\subsection*{Resume}
+\subsection{Resume}
 \begin{itemize}
     \item there is a lot going on \textit{under the hood of a WSC} (WSC = \textbf{Warehouse-scale Computer})
     \item \textit{prod$>>$dev}: The innovations are made by and in companies not universitys
 \end{itemize}
 
-\section*{L05: *aaS}
-Definiton see \cref{subsec:everythingasaservice}
+\section{L05: *aaS}
+Definiton see in the Introduction section (Everything as a Service).%\cref{subsec:everythingasaservice}
 
-\subsection*{Why Xaas or *aaS}
+\subsection{Why Xaas or *aaS}
 \begin{itemize}
     \item avoiding of \textbf{Undiffertiated Heavy Lifting}
     \item the cloud is an ideal environment providing \textit{scale}, \textit{low cost}, \textit{automation via Infrastructure-as-Code}
@@ -193,14 +195,13 @@ Definiton see \cref{subsec:everythingasaservice}
     \label{fig:pizzaservice}
 \end{figure}
 
-\subsection*{Structure of AWS Cloud}
+\subsection{Structure of AWS Cloud}
 \begin{itemize}
     \item \textbf{Availability Zones}: cluster of independent data centres, enables \textbf{fault isolation} and \textbf{high availability}
-    \item \textbf{Regions}: entirely independent clouds, consists of a least two \textit{AZ}s, interconnection on global backbone,
-    different regions have different costings
+    \item \textbf{Regions}: entirely independent clouds, consists of a least two \textit{AZ}s, interconnection on global backbone, different regions have different costings
 \end{itemize}
 
-\subsection*{Which Region should I choose?}
+\subsection{Which Region should I choose?}
 \begin{itemize}
     \item \textbf{Data souvereignty and compilance}: where to store user data?
     \item \textbf{Proximity of users to data}: where are the most of my users? -> lowest latency
@@ -208,7 +209,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \item \textbf{Cost effectiveness}: each region has different costs (Europe and US are the cheapest)
 \end{itemize}
 
-\subsection*{High Availability \& Fault Tolerance}
+\subsection{High Availability \& Fault Tolerance}
 \textbf{High Availability:}
 \begin{itemize}
     \item minimise service downtime by using redundant components
@@ -223,7 +224,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \item Iaas is unlikely to offer FT, PaaS some offers FT
 \end{itemize}
 
-\subsection*{AWS Storage options}
+\subsection{AWS Storage options}
 \begin{itemize}
     \item Elastic Block Storage: SSDs, Magnetic, NAS, Use: OS, Apps
     \item S3: durable object storage, very cheap and big
@@ -231,16 +232,16 @@ Definiton see \cref{subsec:everythingasaservice}
     \item Elastic File Store: shared storage across AZs
 \end{itemize}
 
-\subsection*{IaaS vs PaaS}
+\subsection{IaaS vs PaaS}
 \begin{itemize}
     \item IaaS mainly used by SysAdmins, PaaS mainly used by Developers
     \item IaaS provides e.g. \textit{VMs},\textit{Storage Services},\textit{Networking}, PaaS provides e.g. hosted databases, \textit{App deployment and managment env.},\textit{test suites}
     \item IaaS lower cloud costs, PaaS lower human costs
 \end{itemize}
 
-\section*{L07: Virtualisation, Containers and Container Orchestration}
+\section{L07: Virtualisation, Containers and Container Orchestration}
 
-\subsection*{Virtualisation Basics}
+\subsection{Virtualisation Basics}
 \begin{itemize}
     \item server hardware should be hidden from the user, $\rightarrow$ user sees only guest OS in a VM and not the host OS
     \item Amazon offers different VMs (\textit{AMIs}) with Linux or Windows
@@ -248,7 +249,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \item VMs can stopped, copied, paused and resumed, which enables \textbf{server consolidation}: compress VMs to freeup servers
 \end{itemize}
 
-\subsection*{Types of Virtualisation}
+\subsection{Types of Virtualisation}
  Have a look at \Cref{fig:vmtypes}
 
 \begin{figure}[H]
@@ -264,7 +265,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \item \textbf{Paravirtualisation}: guest OS can make Syscalls via the hypervisor's API, hypervisor does not simulate hardware
 \end{itemize}
 
-\subsection*{Containerisation: Docker}
+\subsection{Containerisation: Docker}
 \begin{itemize}
     \item package and run application in lightweight, isolated environment
     \item Docker runs user processes in a super-isolated execution mode
@@ -285,9 +286,9 @@ Definiton see \cref{subsec:everythingasaservice}
     \label{fig:vmvsdocker}
 \end{figure}
 
-\subsection*{Container Orchestration: Kubernetes}
+\subsection{Container Orchestration: Kubernetes}
 
-\subsubsection*{Motivation}
+\subsubsection{Motivation}
 \begin{itemize}
     \item To run containers at scale needs managment tools
     \item \textbf{(Horizontal) Auto-scaling on demand}
@@ -296,7 +297,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \item \textbf{update/rollback without downtime}
 \end{itemize}
 
-\subsubsection*{Featues of Kubernetes}
+\subsubsection{Featues of Kubernetes}
 \begin{itemize}
     \item \textbf{Automated scaling}
     \item \textbf{Self healing}
@@ -305,7 +306,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \item \textbf{Automated Rollbacks/Rollouts}
 \end{itemize}
 
-\subsubsection*{Kubernetes Components}
+\subsubsection{Kubernetes Components}
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{KubernetesComponents.png}
     \caption{Components of the Kubernetes architecture}
@@ -321,11 +322,11 @@ Definiton see \cref{subsec:everythingasaservice}
     \item \textbf{Services}: groupings of pods which can be referred by a name, Unique IP and DNS name; Pods in Services are load balanced 
 \end{itemize}
 
-\section*{L09: Serverless}
+\section{L09: Serverless}
 
 \textbf{Definiton}: \textit{The essence of the serverless trend is the \textbf{absence} of the server concept during software development.}
 
-\subsection*{Abstractions of App Deployment}
+\subsection{Abstractions of App Deployment}
 \begin{itemize}
     \item \textit{More Abstraction}: more control and trust to given platform
     \item \textit{Less Abstraction}:more undifferentiated heavy lifting
@@ -337,7 +338,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \label{fig:deploymentabstractions}
 \end{figure}
 
-\subsection*{The four pillars of serverless}
+\subsection{The four pillars of serverless}
 \begin{itemize}
     \item No server managment
     \item Flexible Scaling
@@ -345,7 +346,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \item Never Pay for Idle
 \end{itemize}
 
-\subsection*{Serverless FaaS: AWS Lambda}
+\subsection{Serverless FaaS: AWS Lambda}
 \begin{itemize}
     \item Triggered by an event
     \item typically invoked in a few ms (warm start)
@@ -358,7 +359,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \label{fig:awslambda}
 \end{figure}
 
-\subsection*{The four stumbling blocks of serverless}
+\subsection{The four stumbling blocks of serverless}
 \begin{itemize}
     \item Performance Limitations
     \item Vendor Lock-in
@@ -366,7 +367,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \item Security and Privacy
 \end{itemize}
 
-\subsection*{Serverless usecases}
+\subsection{Serverless usecases}
 \begin{itemize}
     \item Event-driven data processing (resize uploaded images)
     \item Serverless webapplication (simple 3-tier app)
@@ -375,13 +376,13 @@ Definiton see \cref{subsec:everythingasaservice}
     \item Event Workflow (image recognition and processing)
 \end{itemize}
 
-\section*{L11: Scalable Systems}
+\section{L11: Scalable Systems}
 
-\subsection*{The Scale Cube}
+\subsection{The Scale Cube}
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{AWSLambdaTrigger.png}
-    \caption{AWS Lambda: Event Triggers}
-    \label{fig:awslambda}
+    \includegraphics[width=\linewidth]{ScaleCube.png}
+    \caption{The Scale Cube}
+    \label{fig:scalecube}
 \end{figure}
 
 \begin{itemize}
@@ -391,13 +392,13 @@ Definiton see \cref{subsec:everythingasaservice}
     client (example: All customers from A-F are together processed, all customers from G-M, etc)
 \end{itemize}
 
-\subsection*{Software architectures}
+\subsection{Software architectures}
 \begin{itemize}
     \item set of structures needed to reason about the system
     \item might be implicit
 \end{itemize}
 
-\subsection*{Architectural Components and Patterns for scalable systems}
+\subsection{Architectural Components and Patterns for scalable systems}
 \begin{itemize}
     \item \textbf{Decoupled Components}: allows independent scalability of components; mechanisms to decouple:
     \begin{itemize}
@@ -416,7 +417,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \item Architectural Patterns: Service oriented architectures;  APIs are cloud requirement
 \end{itemize}
 
-\section*{L13: MapReduce and GFS/HDFS}
+\section{L13: MapReduce and GFS/HDFS}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{GoogleTechnologyStack.png}
@@ -424,7 +425,7 @@ Definiton see \cref{subsec:everythingasaservice}
     \label{fig:googlestack}
 \end{figure}
 
-\subsection*{MapReduce: Basics}
+\subsection{MapReduce: Basics}
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{MapReduce.png}
     \caption{The MapReduce Technology}
@@ -440,7 +441,7 @@ Definiton see \cref{subsec:everythingasaservice}
 AS the master pings the worker and a failure would be noticed really fast. This can now be handled by assigning other processes the task 
 of the failed process.
 
-\subsection*{GFS - Google File System}
+\subsection{GFS - Google File System}
 \textbf{GFS Objects}
 \begin{itemize}
     \item TODO 
@@ -454,9 +455,9 @@ of the failed process.
 
 TODO
 
-\section*{L14: CAP, Paxos, BGP}
+\section{L14: CAP, Paxos, BGP}
 
-\subsection*{CAP Theorem}
+\subsection{CAP Theorem}
 A good cloud might seek to achieve these three things, but it is only able to select two of them.
 And as partition tolerance is mandatory for cloud applications we can only choose one of the other two.
 
@@ -466,37 +467,37 @@ And as partition tolerance is mandatory for cloud applications we can only choos
     \item \textbf{P}artition Tolerance
 \end{itemize}
 
-\subsubsection*{Three paxos rules}
+\subsubsection{Three paxos rules}
 \begin{itemize}
     \item Proposers: learn already accepted values
     \item Acceptors: let proposers know already accepted values, accept or reject proposals, reach consensus on chosing a particular proposal/value
     \item Learners: become aware of the chosen proposal/value and action it
 \end{itemize}
 
-\subsection*{Byzantine Generals}
+\subsection{Byzantine Generals}
 \begin{itemize}
     \item TODO
 \end{itemize}
 
 
-\section*{L15: The Hadoop Ecosystem}
+\section{L15: The Hadoop Ecosystem}
 
-\subsection*{}
+\subsection{}
 \begin{itemize}
     \item 
 \end{itemize}
 
-\section*{L16: Spark and In-Memory Methods}
+\section{L16: Spark and In-Memory Methods}
 
-\section*{L17: NoSQL}
+\section{L17: NoSQL}
 
-\section*{L18: Graph Databases}
+\section{L18: Graph Databases}
 
-\section*{L19: NewSQL $\&$ Event Stream Processing}
+\section{L19: NewSQL $\&$ Event Stream Processing}
 
-\section*{L20: Cloud Security}
+\section{L20: Cloud Security}
 
-\section*{L21: DevOp}
+\section{L21: DevOp}
 
 Todo...
 

@@ -620,7 +620,73 @@ $\Rightarrow$ \textit{polyglot persistence model}: Use more databases, each play
 
 \section{L18: Graph Databases}
 
+\subsection{Network Basics}
+\begin{itemize}
+    \item a network/\textbf{Graph} consists of nodes/points/\textbf{Vertices}, which are connected with lines/\textbf{Edges} 
+    \item \textbf{edges} are \textit{directed or undirected}, may be \textit{self-connections}, may be \textit{weighted}, may be \textit{multi-edges or hyper-edges}
+    \item a \textbf{clicque} is a subgraph that is complete
+    \item a \textbf{path} is a sequence of edges connecting two or more vertices, a \textbf{cycle} is a closed path
+    \item node's \textit{indegree} counts ways to arrive it
+    \item node's \textit{outdegree} counts ways to leave
+    \item on a directed graph indegree and outdegree may differ
+    \item Representing Graphs:
+        \begin{itemize}
+            \item \textit{Adjacancy List}
+            \item \textit{Adjacancy Matrices}: the power of the matrix indicates the lenght of the path
+        \end{itemize}
+\end{itemize}
+
+\subsection{PageRank}
+\begin{itemize}
+    \item PageRank for ranking webpage, where often linked pages are higher ranked
+    \item \textit{Transition Matrix}: indicates the weight of each outgoing link/ edge (each page has $100\%$ for all his links together) 
+    \item \textit{Dangling nodes problem}: A node with no outgoing edges simply jumps to a random site
+    \item \textit{Damping}: off-network transitions appear now not with $0$ but with $\epsilon$ (very small) probability, (there is a dumping factor to specify this)
+\end{itemize}
+
+\subsection{Graph-processing}
+\subsubsection{Pregel}
+\begin{itemize}
+    \item \textbf{Pregel} is a Google framework for network analysis
+    \item it provides high scalability, fault-tolerance, flexibility in expressing arbitrary graph algorithms
+    \item operates over a directed graph
+\end{itemize}
+
+\subsubsection{Apache Giraph}
+\begin{itemize}
+    \item open source equivalent of \textit{Pregel}
+    \item integration in Hadoop ecosystem, efficiently loading data from HBase
+\end{itemize}
+
+\subsubsection{Bulk Sychronous Parallel Model}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{BSPModel.png}
+    \caption{Bulk Synchronous Parallel Model}
+    \label{fig:bspmodel}
+\end{figure}
+
+\begin{itemize}
+    \item 3 steps:
+        \begin{itemize}
+            \item \textit{Concurrent Computation}: computation exclusively local to each node
+            \item \textit{Communication}: messaging between nodes
+            \item \textit{Barrier synchronisation}: checkpoints, block globally nodes before processing signalling received in a \textit{Superstep}
+        \end{itemize}
+    \item a sequence of \textit{supersteps} are run analogous to MapReduce
+    \item during a superstep nodes can send messages, receive message sent in the last superstep, the function can modify the edges/state of verteces
+    \item \textit{Algorithm Termination}: initinally every node is active, after finishing computation a node sets his state to inactive (until it receives a message and
+    becomes active again), the algorithm terminates when all nodes are simultaneously inactive and there is no message in transit
+    \item can be run distributed, then there is a master copy of the program managing/advicing all worker copies 
+    \item fault tolerance: if a worker fails the master reassigns its vertices to another worker and restart the last superstep 
+\end{itemize}
+
 \section{L19: NewSQL $\&$ Event Stream Processing}
+
+\subsection{}
+\begin{itemize}
+    \item 
+\end{itemize}
 
 \section{L20: Cloud Security}
 
@@ -629,6 +695,26 @@ $\Rightarrow$ \textit{polyglot persistence model}: Use more databases, each play
 Todo...
 
 \section{Possible exam Questions}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{ExampleExamQuestions01.png}
+    \label{fig:examquestion01}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{ExampleExamQuestions02.png}
+    \label{fig:examquestion02}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{ExampleExamQuestions03.png}
+    \label{fig:examquestion03}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{ExampleExamQuestions04.png}
+    \label{fig:examquestion04}
+\end{figure}
 
 \vspace*{\fill}
     \pagebreak

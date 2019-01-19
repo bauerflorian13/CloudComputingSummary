@@ -75,7 +75,7 @@
 \setlength\columnseprule{0.5pt}
 \setlength{\columnsep}{10mm}
 \setlength{\parindent}{0mm}
-\setlength{\abovecaptionskip}{0pt}
+\setlength{\abovecaptionskip}{5pt}
 \setlist[1]{itemsep=-0.1em}
 
 \title{\vspace*{\fill}Summary of Cloud Computing at University of Bristol 2018 / 2019\footnote{This is just a simple summary.
@@ -506,14 +506,117 @@ And as partition tolerance is mandatory for cloud applications we can only choos
 
 \section{L15: The Hadoop Ecosystem}
 
+\subsection{Important Components}
+\begin{itemize}
+    \item \textbf{Pig}: platform for batchmode analysis and large datasets, \textit{Pig Latin} is compiled to use MapReduce
+    \item \textbf{Hive}: datawarehouse-software, allows big queries over distributed storage via SQL
+    \item \textbf{YARN}: cluster resource managment and job scheduling, middleware layer between HDFS and various application listed here
+    \item \textbf{Mahout}: scalable MachineLearning platform, runs on Hadoop/Spark
+    \item \textbf{Hoyal/HBase}: HBase is non-relational distributed database (NoSQL), similar to \textit{Google BigTable}
+    \item \textbf{Storm}: a distributed real-time stream-processing system
+    \item \textbf{Giraph}: graph database, running MapReduce to process graphs
+    \item \textbf{Spark}: analytics engine/framework for largescale dataprocessing that runs on YARN
+\end{itemize}
+
+\subsection{Hadoop Versions}
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{HadoopV1.png}
+    \caption{The architecture of Hadoop 1.0}
+    \label{fig:hadoopv1}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{HadoopV2.png}
+    \caption{The architecture of Hadoop 2.0}
+    \label{fig:hadoopv2}
+\end{figure}
+
+\subsection{Hive}
+TODO
+
+\subsection{Pig}
+TODO
+
+\section{L16: Spark and In-Memory Methods}
+
 \subsection{}
 \begin{itemize}
     \item 
 \end{itemize}
 
-\section{L16: Spark and In-Memory Methods}
+\section{L17: NoSQL Databases}
 
-\section{L17: NoSQL}
+\subsection{Main classes of NoSQL databases}
+\begin{itemize}
+    \item \textbf{KeyValue DBs}: e.g. DynamoDB, Redis
+    \item \textbf{Document DBs}: e.g. CouchDB, MongoDB
+    \item \textbf{Column-Family DBs}: e.g. Cassandra, HBase
+    \item \textbf{Graph DBs}: e.g. Giraph
+\end{itemize}
+
+\subsection{ACID \& CRUD}
+\begin{itemize}
+    \item \textbf{ACID}: oftered by RDBMSs, \textbf{A}tomacity \textbf{C}onsistency \textbf{I}solation \textbf{D}urablility
+    \item \textbf{CRUD}: often CRUD is enough, \textbf{C}reate, \textbf{R}ead, \textbf{U}pdate, \textbf{D}elete
+\end{itemize}
+If you only want CRUD and do not care about the lack of ACID, you can choose NoSQL DBs instead of RDBMSs (which where engineered to run on a single server, which is hard to scale)
+
+\subsection{KeyValue DBs}
+\begin{itemize}
+    \item very simple, schemaless
+    \item often very fast
+    \item DBs have different constraints (ACID, object limit size, etc)
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{AmazonSimpleDB.png}
+    \caption{Example of a KeyValue DB: Amazon Simple DB}
+    \label{fig:amazonsimpledb}
+\end{figure}
+
+\subsection{Document DBs}
+\begin{itemize}
+    \item manage more complex data structures than KV datastores
+    \item do not require you to define common structure for all datasets (like KV stores)
+    \item a \textit{document} is a structured object, most commonly used are \textit{XML} and \textit{JSON}
+\end{itemize}
+
+\subsection{Column-Family DBs \& Columnar DBs}
+\begin{itemize}
+    \item for \textit{big data}, so \textit{VLDB} (Very Large Database)
+    \item frequently used columns can be grouped together
+    \item \textit{families} are like relational tables, inividual columns are more like key-value pairs
+\end{itemize}
+
+\subsection{Choices}
+\begin{itemize}
+    \item \textbf{Relational}: 
+        \begin{itemize}
+            \item \textit{good for}: when layout of data is known in before, but exact queries are not
+            \item \textit{less good for}: when data is highly variable or deeply hierarchical
+        \end{itemize}
+    \item \textbf{Key Value}: 
+        \begin{itemize}
+            \item \textit{good for}: data largely independant, horizontal scaling, CRUD
+            \item \textit{less good for}: perform non trivial queries
+        \end{itemize}
+    \item \textbf{Document}: 
+        \begin{itemize}
+            \item \textit{good for}: highly variable data, storing redundant data is not a problem
+            \item \textit{less good for}: when data needs to be normalized
+        \end{itemize}
+    \item \textbf{Column-family}: 
+        \begin{itemize}
+            \item \textit{good for}: Big Data, data compression, have an idea how the queries will look like
+            \item \textit{less good for}: when you don't know how data will be quiered
+        \end{itemize}
+    \item \textbf{Graph}: 
+        \begin{itemize}
+            \item \textit{good for}: applications with \textit{networks of relationships}
+            \item \textit{less good for}: large scale situations where partitioning across nodes is necessary
+        \end{itemize}
+\end{itemize}
+$\Rightarrow$ \textit{polyglot persistence model}: Use more databases, each playing a different role
 
 \section{L18: Graph Databases}
 

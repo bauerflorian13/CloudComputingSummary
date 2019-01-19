@@ -467,6 +467,14 @@ And as partition tolerance is mandatory for cloud applications we can only choos
     \item \textbf{P}artition Tolerance
 \end{itemize}
 
+\subsection{Paxos Approach}
+\begin{itemize}
+    \item \textbf{Paxos} is an approach to ensuring agreement of a series of asynchronous operations in distributed systems.
+    \item achieve consensus, and ensure agreed actions can not be forgotten anymore
+    \item dspite system messages being duplicate, lost, etc
+    \item Paxos assumes messages are not deliberately malicious (BGP does)
+\end{itemize}
+
 \subsubsection{Three paxos rules}
 \begin{itemize}
     \item Proposers: learn already accepted values
@@ -474,11 +482,27 @@ And as partition tolerance is mandatory for cloud applications we can only choos
     \item Learners: become aware of the chosen proposal/value and action it
 \end{itemize}
 
-\subsection{Byzantine Generals}
+\subsection{Types of Consistency}
 \begin{itemize}
-    \item TODO
+    \item \textbf{Strong Consistency}: after an update completes, every access will return the same updated value
+    \item \textbf{Weak Consistency}: after an update completes, accesses are not guaranteed to return the updated value
+    \item \textbf{Eventual Consistency}: eventually all access return the updated value (e.g. updates propagate in a lazy fashion)
 \end{itemize}
 
+\subsection{Byzantine Generals Problem}
+\subsubsection{Byzantine Faults}
+\begin{itemize}
+    \item \textbf{Byzantine Fault}: different symptoms to different observers
+    \item \textbf{Byzantine Failure}: loss of a system service due to Byzantine Fault
+\end{itemize}
+
+\subsubsection{Theoretical Problem}
+\begin{itemize}
+    \item there are a number of generals, each of them with one vote
+    \item some of the generals are traitors and try to foil the other ones, by sending different votes to different generals (instead of the same vote to different generals)
+    \item Key results of BG paper: BG can achieve consensus when $n\geq3m+1$ with $n$ loyal generals and $m$ traitors; To do so they must engange in $m+1$ rounds of message passing
+    \item \textbf{Oral Message algorithm}: solves the problem but preventing BFs is very expensive in term of more bandwith and redundancy
+\end{itemize}
 
 \section{L15: The Hadoop Ecosystem}
 
@@ -500,6 +524,8 @@ And as partition tolerance is mandatory for cloud applications we can only choos
 \section{L21: DevOp}
 
 Todo...
+
+\section{Possible exam Questions}
 
 \vspace*{\fill}
     \pagebreak

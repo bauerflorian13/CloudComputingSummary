@@ -683,12 +683,98 @@ $\Rightarrow$ \textit{polyglot persistence model}: Use more databases, each play
 
 \section{L19: NewSQL $\&$ Event Stream Processing}
 
+\subsection{NewSQL properties}
+\begin{itemize}
+    \item flexibility and scalability of NoSQL, support for SQL and/or ACID as RDBMS
+    \item SQL as the primary interface
+    \item ACID support for transactions
+    \item Nonlocking concurrency controll
+    \item high per node performance 
+    \item parallel shared nothing architecture
+    \item an example for this might be \textit{Google Spanner}
+\end{itemize}
+
+\subsection{Google Spanner}
+\begin{itemize}
+    \item lockfree distributed read-only transactions
+    \item external consistency (ACID transactions)
+    \item SQL queries
+    \item officially AP (in terms of CAP)
+    \item scales horizontally
+    \item Spaner Zone Server Organisation:
+        \begin{itemize}
+            \item \textit{Zonemaster} assigns data to \textit{span servers}, 1 per zone
+            \item \textit{Span server} serves data to clients, 300 - 1000 per zone
+            \item \textit{Location proxies} are used by clients to locate span servers with correct data
+            \item \textit{Universe master} has a status console, 1 per universe
+            \item Zone Software Stack is part of \Cref{fig:zonesoftwarestack}
+        \end{itemize}
+    \item Spaner Application Model: supports unlimited tables in database within the universe, data actually stored on 3 replicas
+    \item Open Source DBs based on Spanner: \textit{CockroachDB}, \textit{YugaByte}
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{ZoneSoftwareStack.png}
+    \label{fig:zonesoftwarestack}
+\end{figure}
+
+\subsubsection{Google TrueTime}
+\begin{itemize}
+    \item used in and makes \textbf{Google Spanner} possible
+    \item every Google datacentre has an atomic clock
+    \item clients poll TimeMasters (GPS and atomic clocks)
+    \item TrueTime API is Google proprietary
+\end{itemize}
+
+\subsubsection{Google F1 Database}
+\begin{itemize}
+    \item database built on top of Spanner
+    \item five replicas needed for HA
+    \item Geography: replicas spread around the world to survive regional disasters
+    \item High Throughput, but different approaches have to be done to deal with high latency
+    \item One System for \textit{OLAP} and \textit{OLTP} (=\textit{HTAP})
+\end{itemize}
+
+\subsection{Real Time Event Streaming}
+\begin{itemize}
+    \item different use cases (e.g. network and Infrastructure monitoring, sensor data, commerce and retail marketing)
+    \item Requirements: data arrives in real time (online), High throughput, low latency, FT
+\end{itemize}
+
+\subsubsection{Systems for RTSP}
+\begin{itemize}
+    \item General Architecture: Components(Source, Processing, Sinks), Framework provides message queueing, ressoure manager to allocate nodes tasks
+\end{itemize}
+
+\subsubsection{Apache Storm}
+\begin{itemize}
+    \item pioneer in realtime processing
+    \item works on unbounded stream of messages 
+    \item appropriate for low latency
+    \item \textit{Storm provides the transformation of streams, so to transform one stream into another one.}
+    \item topology runs forever or until it gets killed. No data loss is guaranteed even in the case of machine failures or messages get dropped
+    \item Problems for Storm: no exactly once-guarantees, consistency, difficult to combine batch and stream processing, straggler tolerance
+\end{itemize}
+
+\subsubsection{Discetrized Streams and Spark Streaming}
+\begin{itemize}
+    \item \textit{Buffer and Compute} pattern
+    \item near real time
+    \item avoid overhead from Disk I/O that Hadoop faced 
+\end{itemize}
+TODO
+
+\subsubsection{Apache Kafka}
+\begin{itemize}
+    \item TODO
+\end{itemize}
+
+\section{L20: Cloud Security}
+
 \subsection{}
 \begin{itemize}
     \item 
 \end{itemize}
-
-\section{L20: Cloud Security}
 
 \section{L21: DevOp}
 
@@ -714,6 +800,11 @@ Todo...
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{ExampleExamQuestions04.png}
     \label{fig:examquestion04}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{ExampleExamQuestions05.png}
+    \label{fig:examquestion05}
 \end{figure}
 
 \vspace*{\fill}

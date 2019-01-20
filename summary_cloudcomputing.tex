@@ -540,17 +540,31 @@ And as partition tolerance is mandatory for cloud applications we can only choos
 \end{figure}
 
 \subsection{Hive}
-TODO
+\begin{itemize}
+    \item best-suited to data-warehouse, works on HDFS
+    \item HiveQL/HQL: SQL like query language
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{HiveArchitecture.png}
+    \caption{The architecture of Hive}
+    \label{fig:hivearch}
+\end{figure}
 
 \subsection{Pig}
-TODO
+\begin{itemize}
+    \item \textbf{PigLatin} is a \textbf{Dataflow language}
+    \item users describe how data is stored/processed/read in \textit{parallel}
+    \item dataflows could be \textit{linear} or \textit{DAG}
+\end{itemize}
+
+\subsection{Elastic Map Reduce}
+\begin{itemize}
+    \item MapReduce in the Cloud (as an Amazon, Google, Microsoft, etc Service) 
+\end{itemize}
 
 \section{L16: Spark and In-Memory Methods}
-
-\subsection{}
-\begin{itemize}
-    \item 
-\end{itemize}
+Canceled because of sickness, so there are no lecture slides and there was no lecture. This should be not relevant for the exam.
 
 \section{L17: NoSQL Databases}
 
@@ -709,7 +723,7 @@ $\Rightarrow$ \textit{polyglot persistence model}: Use more databases, each play
     \item SQL queries
     \item officially AP (in terms of CAP)
     \item scales horizontally
-    \item Spaner Zone Server Organisation:
+    \item Spanner Zone Server Organisation:
         \begin{itemize}
             \item \textit{Zonemaster} assigns data to \textit{span servers}, 1 per zone
             \item \textit{Span server} serves data to clients, 300 - 1000 per zone
@@ -723,6 +737,7 @@ $\Rightarrow$ \textit{polyglot persistence model}: Use more databases, each play
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{ZoneSoftwareStack.png}
+    \caption{Spanner Zone Software Stack}
     \label{fig:zonesoftwarestack}
 \end{figure}
 

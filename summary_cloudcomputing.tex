@@ -784,12 +784,35 @@ $\Rightarrow$ \textit{polyglot persistence model}: Use more databases, each play
     \item \textit{Buffer and Compute} pattern
     \item near real time
     \item avoid overhead from Disk I/O that Hadoop faced 
+    \item Example of discetrized streams is Apache Spark
+    \item during each \textit{Compute} batch, we can see the system as a normal batch processing pipeline
+    \item FT: if executor lost $\rightarrow$ driver restarts batch on different node, if driver fail all received blocks are lost, periodically checkpoints on the disk are made
 \end{itemize}
-TODO
+
+\subsubsection{Properties of Message Queues}
+\begin{itemize}
+    \item Asynchronous
+    \item Decoupling
+    \item Resilience
+    \item Redundancy
+    \item Guarantees
+    \item Scalable
+    \item \textit{BUT: provide no transformation/procesing}
+\end{itemize}
 
 \subsubsection{Apache Kafka}
 \begin{itemize}
-    \item TODO
+    \item full independence of producer and consumer
+    \item persistence
+    \item distributed and replicated
+    \item guarantees
+    \item \textit{goes beyond Queue concept(multiple reads) and pub/sub(divide up processing among group member).}
+    \item Benefit: combines the concept of Queues and pub/sub
+\end{itemize}
+
+\subsubsection{Google Dataflow}
+\begin{itemize}
+    \item improves spark streaming with windowing based on data
 \end{itemize}
 
 \section{L20: Cloud Security}

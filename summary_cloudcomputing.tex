@@ -809,10 +809,87 @@ TODO
 
 \section{L21: DevOp}
 
-\subsection{}
+\subsection{Software Design Methods}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{SDLC.png}
+    \caption{Software Design Lifecycle SDLC}
+    \label{fig:sdlc}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{Waterfallmodel.png}
+    \caption{Before Agile Dev: Waterfall model}
+    \label{fig:waterfallmodel}
+\end{figure}
+
 \begin{itemize}
-    \item 
+    \item Waterfall is inefficient in non-trivial projects
+    \item $\Rightarrow$ Agile Developement Methods:
+        \begin{itemize}
+            \item Iterative developement cycles
+            \item XP (extreme programming)
+            \item Scrum, sprints are often 2 weeks long
+        \end{itemize}
 \end{itemize}
+
+\subsection{DevOps Traits}
+\begin{itemize}
+    \item Goal: \textit{Releasing updates as quickly as possible without losing quality}
+    \item Developers want \textit{agility}, Operations want \textit{stability}
+    \item \textbf{Cross-functional Dev/Ops Teams}:
+        \begin{itemize}
+            \item \textit{Collaboration}: sprint dev teams may include QA from Ops
+            \item \textit{Responsibility}: team is responsible for end-to-end quality product
+            \item \textit{Awareness}: both learn potential issues from the other one
+            \item \textit{Communication}: tools like Slack or Jira
+        \end{itemize}
+    \item \textbf{Frequent Code Commits and Builds}:
+        \begin{itemize}
+            \item \textit{Continuous Integration}
+            \item \textit{Continuous Delivery}
+            \item \textit{Continuous Deployment}
+        \end{itemize}
+    \item \textbf{Robust Product Releases}:
+        \begin{itemize}
+            \item \textit{Fail-fast philosophy}
+            \item \textit{Integrated Monitoring}
+            \item \textit{Integrated Security(SecOps)}
+        \end{itemize}
+    \item \textbf{Consistent Deployment Environments}:
+        \begin{itemize}
+            \item \textit{Identical Environments}
+            \item \textit{Infrastructure as Code (IaC)}
+        \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{CostvsFreqTesting.png}
+    \caption{Automated Tests: Costs vs Frequency}
+    \label{fig:autotest}
+\end{figure}
+
+\subsection{Infrastructure as Code}
+\begin{itemize}
+    \item \textbf{Automate} the creation, deletion, updates to infrastructure
+    \item \textbf{Consistent repeatability} for multiple environments
+    \item \textbf{Version control} the infrastructure
+    \item dependent on IaaS \textbf{APIs}
+    \item typically implemented using \textit{Configuration managment}, \textit{Orchestration}, \textit{Scripting}
+    \item most popular IaC templating engines: \textit{Terraform}, \textit{CloudFormation(AWS)}
+    \item \textit{CloudFormation Template} Sections:
+        \begin{itemize}
+            \item \textit{Ressources}
+            \item \textit{Parameters}
+            \item \textit{Conditions}
+            \item \textit{Mappings}
+            \item \textit{Metadata}
+            \item \textit{Transform}
+            \item \textit{Outputs}
+        \end{itemize} 
+\end{itemize}
+
+
 
 \section{Possible exam Questions}
 
@@ -839,6 +916,11 @@ TODO
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{ExampleExamQuestions05.png}
     \label{fig:examquestion05}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{ExampleExamQuestions06.png}
+    \label{fig:examquestion06}
 \end{figure}
 
 \vspace*{\fill}

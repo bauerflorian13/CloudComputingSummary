@@ -417,7 +417,7 @@ Definiton see in the Introduction section (Everything as a Service).%\cref{subse
     \item Architectural Patterns: Service oriented architectures;  APIs are cloud requirement
 \end{itemize}
 
-\section{L13: MapReduce and GFS/HDFS}
+\section{L13: MapReduce \& GFS/HDFS}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{GoogleTechnologyStack.png}
@@ -438,13 +438,16 @@ Definiton see in the Introduction section (Everything as a Service).%\cref{subse
     \item \textit{Reduce phase}: other worker processes collect the processed data and reduce them
 \end{itemize}
 
-AS the master pings the worker and a failure would be noticed really fast. This can now be handled by assigning other processes the task 
+As the master pings the worker and a failure would be noticed really fast. This can now be handled by assigning other processes the task 
 of the failed process.
 
 \subsection{GFS - Google File System}
-\textbf{GFS Objects}
 \begin{itemize}
-    \item TODO 
+    \item \textit{huge} scalable distributed storage using \textit{cheap} components
+    \item files are divided in $64$ Mb blocks called \textbf{chunks} with a unique ID each (called \textbf{chunk handle})
+    \item chunks are stored in \textbf{chunk servers}
+    \item FT achieved through replication across multiple servers
+    \item \textit{Write-control for replicas}: each change is performed on all replicas,synchronized via \textbf{leases} (\textbf{lease holder} is the \textbf{primary replica})
 \end{itemize}
 
 \begin{figure}[H]
@@ -453,7 +456,12 @@ of the failed process.
     \label{fig:gfs}
 \end{figure}
 
-TODO
+\subsection{HDFS - Hadoop File System}
+\begin{itemize}
+    \item \textit{HDFS}: same architecture as GFS with slightly different names
+    \item \textit{HDFS 2.0}: new features: \textbf{NameNode HA}, \textbf{Snapshots}, \textbf{Federation} (horizontal scaling of NameNodes)
+    \item \textit{HDFS 3.0}: currently beta status, major investement in \textbf{Erasure coding} (FT with more effiency,etc)
+\end{itemize}
 
 \section{L14: CAP, Paxos, BGP}
 
